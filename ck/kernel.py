@@ -8075,10 +8075,13 @@ def access(i):
     return rr
 
 ##############################################################################
+def main(*args):
+    r = access(list(args[1:]))
+
+    if 'return' not in r:
+        raise Exception('CK access function should always return key \'return\'!')
+
+    return int(r['return'])
+
 if __name__ == "__main__":
-   r=access(sys.argv[1:])
-
-   if 'return' not in r:
-      raise Exception('CK access function should always return key \'return\'!')
-
-   exit(int(r['return']))
+   sys.exit(main(sys.argv))
